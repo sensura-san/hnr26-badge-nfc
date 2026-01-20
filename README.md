@@ -1,5 +1,5 @@
 ## environment setup
-for easily accessing the esp32 micropython REPL prompt over serial:
+### access micropython REPL using `mpremote`
 ```bash
 uv tool install mpremote
 ```
@@ -12,7 +12,7 @@ mpremote repl
 - `CTRL + D` to re-run previously ended programme (by soft-rebooting micropython interpreter)
 - `CTRL + X` to exit prompt
 
-alternatively:
+### alternatively using screen
 ```bash
 screen /dev/ttyACM0
 ```
@@ -32,3 +32,31 @@ therefore, use:
 mpremote run copytree.py
 ```
 then manually copy the output files one-by-one into the correct directories using the earlier `cp` command (yeah is scuffed)
+
+## dumping flash
+put esp into bootloader mode:
+```bash
+- hold BOOT
+- press and release RESET
+- realse BOOT
+```
+
+install `esptool`:
+```bash
+uv tool install esptool
+```
+
+check connection:
+```bash
+esptool --chip esp32c3 chip_id
+```
+
+find flash size (for dumping):
+```bash
+esptool flash_id
+```
+
+dump entire flash:
+```bash
+esptool.py read_flash 0x000000 0x400000 full_flash_dump.bin
+```
