@@ -1,0 +1,4 @@
+Adafruit CircuitPython 10.0.3 on 2025-10-17; Seeed Studio XIAO ESP32C3 with ESP32-C3FN4
+Board ID:seeed_xiao_esp32c3
+UID:499A09C6D608
+MAC:06:00:00:00:46:F5

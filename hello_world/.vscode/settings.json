@@ -1,0 +1,25 @@
+{
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        "reportShadowedImports": "none"
+    },
+    "python.analysis.extraPaths": [
+        "/home/sensura/.config/Code/User/globalStorage/padgettholdings.circuitpythonsync/stubs/circuitpython_stubs-10.0.3/board_definitions/seeed_xiao_esp32c3",
+        "/home/sensura/.vscode/extensions/wmerkens.vscode-circuitpython-v2-0.3.4/boards/0x000C2886/0x00C30001",
+        "/home/sensura/.vscode/extensions/wmerkens.vscode-circuitpython-v2-0.3.4/stubs",
+        "/home/sensura/.config/Code/User/globalStorage/wmerkens.vscode-circuitpython-v2/bundle/20260116/adafruit-circuitpython-bundle-py-20260116/lib",
+        "/home/sensura/.config/Code/User/globalStorage/padgettholdings.circuitpythonsync/stubs/circuitpython_stubs-10.0.3"
+    ],
+    "circuitpython.board.version": null,
+    "circuitpython.board.vid": "0x000C2886",
+    "circuitpython.board.pid": "0x00C30001",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "circuitpythonsync.cpbaseversion": "10",
+    "circuitpythonsync.cpfullversion": "10.0.3",
+    "circuitpythonsync.curlibtag": "20260116",
+    "circuitpythonsync.doNotShowWelcome": true,
+    "circuitpythonsync.cpboardname": "seeed_xiao_esp32c3",
+    "circuitpythonsync.drivepath": "serialfs:/"
+}
