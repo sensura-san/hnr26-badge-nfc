@@ -1,4 +1,19 @@
-## environment setup
+# hnr26-badge-nfc
+monorepo related to development/experimentation on the hack and roll nfc badge reader~
+
+## project ideas
+- bus card info reader
+- maimai card info reader..?! it has wifi after all... (but depends on their api hhh)
+- pure c graphics manipulation on the screen per-pixel? see: https://youtu.be/xNX9H_ZkfNE
+
+## dumped file structure
+```
+esp32c3-dump
+|- fs/             # copy of device's root dir
+|- full_flash.bin  # complete copy of flash
+```
+
+## environment setup (for interacting with device)
 ### access micropython REPL using `mpremote`
 ```bash
 uv tool install mpremote
@@ -58,5 +73,5 @@ esptool flash_id
 
 dump entire flash:
 ```bash
-esptool.py read_flash 0x000000 0x400000 full_flash_dump.bin
+esptool.py read_flash 0x000000 0x400000 full_flash.bin
 ```
