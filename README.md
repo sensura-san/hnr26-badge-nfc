@@ -10,7 +10,7 @@ monorepo related to development/experimentation on the hack and roll nfc badge r
 - [x] hello world test
 - [x] counter programme (impl. original code for UI)
 - [ ] nfc reader reimplementation
-- [ ] image UI (does this need lower level?)
+- [ ] image UI
 - [ ] spotify websocket thing
 
 ## dumped file structure
@@ -23,7 +23,6 @@ esp32c3-dump
 
 ## environment setup (for interacting with device)
 ### access micropython REPL using `mpremote`
-
 ```bash
 uv tool install mpremote
 ```
