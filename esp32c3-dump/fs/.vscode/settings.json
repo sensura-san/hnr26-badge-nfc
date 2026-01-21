@@ -1,0 +1,12 @@
+{
+    "circuitpythonsync.cpbaseversion": "10",
+    "circuitpythonsync.cpfullversion": "10.0.3",
+    "circuitpythonsync.curlibtag": "20260121",
+    "python.analysis.extraPaths": [
+        "/home/sensura/.vscode/extensions/wmerkens.vscode-circuitpython-v2-0.3.4/boards/0x000C2886/0x00C30001",
+        "/home/sensura/.vscode/extensions/wmerkens.vscode-circuitpython-v2-0.3.4/stubs",
+        "/home/sensura/.config/Code/User/globalStorage/wmerkens.vscode-circuitpython-v2/bundle/20260116/adafruit-circuitpython-bundle-py-20260116/lib",
+        "/home/sensura/dev/hnr26-badge-nfc/esp32c3-dump/fs/libArchive/libstubs",
+        "/home/sensura/.config/Code/User/globalStorage/padgettholdings.circuitpythonsync/stubs/circuitpython_stubs-10.0.3"
+    ]
+}
