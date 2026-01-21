@@ -9,7 +9,7 @@ import terminalio
 i2c = board.I2C()
 
 # set up display bus for the SSD1306 display
-# 126x64 res, I2C address 0x3C
+# 128x64 res, I2C address 0x3C
 # datasheet: cdn-shop.adafruit.com/datasheets/SSD1306.pdf
 displayio.release_displays()  # Release any resources currently in use for the displays
 

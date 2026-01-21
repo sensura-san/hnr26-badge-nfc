@@ -10,7 +10,7 @@ monorepo related to development/experimentation on the hack and roll nfc badge r
 - [x] hello world test
 - [x] counter programme (impl. original code for UI)
 - [ ] nfc reader reimplementation
-- [ ] image UI (does this need lower level?)
+- [ ] image UI
 - [ ] spotify websocket thing
 
 ## dumped file structure
