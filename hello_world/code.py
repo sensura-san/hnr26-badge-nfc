@@ -49,6 +49,7 @@ code outline:
 """
 # TODO: add typing, finish nfc impl.
 
+
 class ScreenLabel(label.Label):
     def __init__(self):
         super().__init__(FONT, text="", x=0, y=8)
@@ -65,6 +66,7 @@ class ScreenLabel(label.Label):
 
     def clear(self):
         self.update(text="")
+
 
 class State:
     tag = "_state"
@@ -84,6 +86,7 @@ class State:
         machine.btn_b.update()
         machine.btn_c.update()
         # machine.serial.update()
+
 
 class StateMachine:
     def __init__(self):
@@ -123,7 +126,8 @@ class StateMachine:
     #         self.ctx.pop()
     #         self.ctx.append(self.label_body_top)
     #         self.ctx.append(self.label_body_btm)
-            
+
+
 class InitState(State):
     tag = "init"
 
@@ -160,7 +164,9 @@ class InitState(State):
         machine.ctx.append(machine.label_btn_c)
 
         # Create body labels (w/ text for label_body_top)
-        machine.label_body_top.update(text="I coloured my badge\nand all I got was \nthis lousy PCB", y=24)
+        machine.label_body_top.update(
+            text="I coloured my badge\nand all I got was \nthis lousy PCB", y=24
+        )
         machine.ctx.append(machine.label_body_top)
         sleep(3)
 
@@ -182,15 +188,15 @@ class InitState(State):
         btn_c_pin.direction = digitalio.Direction.INPUT
         btn_c_pin.pull = digitalio.Pull.UP
         machine.btn_c = Debouncer(btn_c_pin, interval=0.05)
-        
+
         while True:
             try:
                 machine.pn532 = PN532_I2C(i2c)
-            except(ValueError, RuntimeError):
+            except (ValueError, RuntimeError):
                 print("Cannot connect to PN532 NFC, trying again...")
                 sleep(1)
             else:
-                break    
+                break
 
         # configure PN532 to communicate w/ MiFare cards
         machine.pn532.SAM_configuration()
@@ -244,7 +250,7 @@ class NfcReadState(State):
 
     def __init__(self):
         pass
-    
+
     def enter(self, machine):
         super().enter(machine, self.tag)
 
@@ -271,10 +277,10 @@ class NfcReadResultState(State):
     def __init__(self):
         self.nfc_id = None
         self.badge_id_bytes = None
-    
+
     def enter(self, machine: StateMachine):
         super().enter(machine, self.tag)
-    
+
         machine.label_title.update(text="Read badge ID")
         machine.label_body_top.update(text="Reading badge...")
         machine.label_body_btm.clear()
@@ -290,8 +296,17 @@ class NfcReadResultState(State):
         else:
             nfc_id_text = f"NFC: 0x{self.nfc_id.hex()}"
             machine.label_body_top.update(text=nfc_id_text)
-            
-            self.badge_id_bytes = machine.pn532.ntag2xx_read_block(0x04)  # TODO: what is this sob
+
+            self.badge_id_bytes = machine.pn532.ntag2xx_read_block(
+                0x04
+            )  # TODO: what is this sob
+
+            if self.badge_id_bytes is None:
+                machine.label_body_btm.update(text="try again!")
+            else:
+                badge_id_text = f"Badge ID: {int.from_bytes(self.badge_id_bytes)}"
+                machine.label_title.update(text="read successful!")
+                machine.label_body_btm.update(text=badge_id_text)
 
     def leave(self, machine):
         pass
@@ -305,7 +320,7 @@ class NfcWriteState(State):
 
     def __init__(self):
         pass
-    
+
     def enter(self, machine):
         super().enter(machine, self.tag)
 
@@ -314,7 +329,7 @@ class NfcWriteState(State):
 
     def update(self, machine):
         super().update(machine)
-        
+
 
 def main():
     # Initialise a state machine to deal with the different screens and program
@@ -334,7 +349,8 @@ def main():
     # keep state machine updated every tick
     while True:
         machine.update()
-    
+
 
 if __name__ == "__main__":
     main()
+
